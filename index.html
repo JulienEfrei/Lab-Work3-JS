@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My First Web Page</title>
+</head>
+
+<body>
+    <script>
+
+        var numberOfCourses = 0;
+        numberOfCourses = parseInt(prompt("How many courses are you taking this semester?"));
+        if (isNaN(numberOfCourses) || numberOfCourses < 1) {
+            document.write("Invalid Input");
+        }
+        else {
+            var total = 0;
+            var courseMarks = [];
+            for (var i = 1; i <= numberOfCourses; i++) {
+                courseMarks.push(parseInt(prompt("Enter the mark for course " + i)));
+                total += courseMarks[i - 1];
+            }
+            var average = (total / numberOfCourses).toFixed(2);
+            /* Other way to do it
+
+            for (var i = 0; i < numberOfCourses; i++) {
+                total += parseInt(prompt("What is your grade for course " + (i + 1) + "?"));
+            }
+            const sum = ((courseMarks.reduce((a, b) => a + b, 0))/numberOfCourses).toFixed(2);
+            */
+            //Display the different courseMarks:
+            courseMarks.forEach(element => {
+                document.write("Course Marks: " + element + "<br>");
+            });
+
+            if (average >= 90 && average <= 100) {
+                document.write("Your average grade is " + average + ". your grade is A+");
+            } else if (average >= 80 && average < 90) {
+                document.write("Your average grade is " + average + ". your grade is B");
+            } else if (average >= 70 && average < 80) {
+                document.write("Your average grade is " + average + ". your grade is C");
+            } else if (average >= 60 && average < 70) {
+                document.write("Your average grade is " + average + ". your grade is D");
+            } else if (average < 60) {
+                document.write("Your average grade is " + average + ". your grade is F");
+            } else {
+                document.write("Sorry, All the marks have to be from minimum 0 to maximum 100!");
+            }
+        }
+
+    </script>
+</body>
+
+</html>
